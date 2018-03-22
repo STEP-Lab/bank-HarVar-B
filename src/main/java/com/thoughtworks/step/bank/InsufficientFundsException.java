@@ -1,4 +1,4 @@
-package com.thoughtworks;
+package com.thoughtworks.step.bank;
 
 public class InsufficientFundsException extends Exception {
     public InsufficientFundsException() {

@@ -1,8 +1,5 @@
 package com.thoughtworks.step.bank;
 
-import com.thoughtworks.InsufficientFundsException;
-import com.thoughtworks.MinimumBalanceException;
-
 public class Account {
 
     private final String holderName;

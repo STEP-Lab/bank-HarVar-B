@@ -1,4 +1,4 @@
-package com.thoughtworks;
+package com.thoughtworks.step.bank;
 
 public class MinimumBalanceException extends Exception {
     public MinimumBalanceException() {

@@ -1,4 +1,4 @@
-package com.thoughtworks;
+package com.thoughtworks.step.bank;
 
 public class InvalidAccountNumberException extends Exception {
     public InvalidAccountNumberException() {
