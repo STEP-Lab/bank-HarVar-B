@@ -1,5 +1,4 @@
 import com.thoughtworks.InsufficientFundsException;
-import com.thoughtworks.InvalidAccountNumberException;
 import com.thoughtworks.MinimumBalanceException;
 import com.thoughtworks.step.bank.Account;
 import org.junit.Before;
@@ -13,7 +12,7 @@ public class AccountTest {
     private Account acc;
 
     @Before
-    public void setUp() throws InvalidAccountNumberException, MinimumBalanceException{
+    public void setUp() throws Exception{
             acc = new Account("1912-7864",1200);
     }
 
@@ -22,13 +21,9 @@ public class AccountTest {
         assertThat(acc.getBal(),is(1200.0F));
     }
 
-    @Test
-    public void getNameTest(){
-        assertThat(acc.getName(),is("1912-7864"));
-    }
 
     @Test
-    public void debitTest() throws InsufficientFundsException{
+    public void debitTest() throws Exception{
         acc.debit(400);
         assertThat(acc.getBal(),is(800.0F));
     }
@@ -39,13 +34,8 @@ public class AccountTest {
         assertThat(acc.getBal(),is(1600.0F));
     }
 
-    @Test(expected = InvalidAccountNumberException.class)
-    public void accountNumberPatternTest() throws Exception{
-            new Account("12345678",1200);
-    }
-
     @Test(expected = InsufficientFundsException.class)
-    public void insufficientFundsExceptionTest() throws InsufficientFundsException, InvalidAccountNumberException, MinimumBalanceException{
+    public void insufficientFundsExceptionTest() throws Exception{
         Account harvar;
         harvar = new Account("1912-7864", 1200);
         harvar.debit(400);
