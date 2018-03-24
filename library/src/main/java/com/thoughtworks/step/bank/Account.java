@@ -2,10 +2,10 @@ package com.thoughtworks.step.bank;
 
 public class Account {
 
-    private final String holderName;
+    private final AccountNumber holderName;
     private float balance;
 
-    public Account(String accountNumber, int balance) throws  MinimumBalanceException {
+    public Account(AccountNumber accountNumber, int balance) throws  MinimumBalanceException {
         this.holderName = accountNumber;
 
         int MINIMUMBALANCE = 1000;

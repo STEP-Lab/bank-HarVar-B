@@ -1,4 +1,5 @@
 import com.thoughtworks.step.bank.Account;
+import com.thoughtworks.step.bank.AccountNumber;
 import com.thoughtworks.step.bank.InsufficientFundsException;
 import com.thoughtworks.step.bank.MinimumBalanceException;
 import org.junit.Before;
@@ -13,7 +14,7 @@ public class AccountTest {
 
     @Before
     public void setUp() throws Exception{
-            acc = new Account("1912-7864",1200);
+            acc = new Account(new AccountNumber("1912-7864"),1200);
     }
 
     @Test
@@ -27,7 +28,6 @@ public class AccountTest {
         acc.debit(400);
         assertThat(acc.getBal(),is(800.0F));
     }
-
     @Test
     public void credit(){
         acc.credit(400);
@@ -37,13 +37,13 @@ public class AccountTest {
     @Test(expected = InsufficientFundsException.class)
     public void checkIfExcessMoneyCanBeDebitedFromAccount() throws Exception{
         Account harvar;
-        harvar = new Account("1912-7864", 1200);
+        harvar = new Account(new AccountNumber("1912-7864"), 1200);
         harvar.debit(400);
         harvar.debit(1000);
     }
 
     @Test(expected = MinimumBalanceException.class)
     public void checkIfAccountCanBeCreatedWithOutMinimumBalance() throws Exception {
-        new Account("1912-7864",800);
+        new Account(new AccountNumber("1912-7864"),800);
     }
 }

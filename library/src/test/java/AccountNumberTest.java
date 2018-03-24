@@ -2,6 +2,7 @@ import com.thoughtworks.step.bank.AccountNumber;
 import com.thoughtworks.step.bank.InvalidAccountNumberException;
 import org.junit.Test;
 
+
 public class AccountNumberTest {
     @Test(expected= InvalidAccountNumberException.class)
     public void checkAccountNumberFor4Digits() throws Exception{
