@@ -5,6 +5,8 @@ import com.thoughtworks.step.bank.MinimumBalanceException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -14,36 +16,36 @@ public class AccountTest {
 
     @Before
     public void setUp() throws Exception{
-            acc = new Account(new AccountNumber("1912-7864"),1200);
+            acc = new Account(new AccountNumber("1912-7864"),new BigDecimal(1200));
     }
 
     @Test
     public void getBal() {
-        assertThat(acc.getBal(),is(1200.0F));
+        assertThat(acc.getBal(),is(new BigDecimal(1200)));
     }
 
 
     @Test
     public void debit() throws Exception{
-        acc.debit(400);
-        assertThat(acc.getBal(),is(800.0F));
+        acc.debit(new BigDecimal(500) );
+        assertThat(acc.getBal(),is(new BigDecimal(700)));
     }
     @Test
     public void credit(){
-        acc.credit(400);
-        assertThat(acc.getBal(),is(1600.0F));
+        acc.credit(new BigDecimal(400) );
+        assertThat(acc.getBal(),is(new BigDecimal(1600)));
     }
 
     @Test(expected = InsufficientFundsException.class)
     public void checkIfExcessMoneyCanBeDebitedFromAccount() throws Exception{
         Account harvar;
-        harvar = new Account(new AccountNumber("1912-7864"), 1200);
-        harvar.debit(400);
-        harvar.debit(1000);
+        harvar = new Account(new AccountNumber("1912-7864"), new BigDecimal(1200) );
+        harvar.debit(new BigDecimal(400) );
+        harvar.debit(new BigDecimal(1000) );
     }
 
     @Test(expected = MinimumBalanceException.class)
     public void checkIfAccountCanBeCreatedWithOutMinimumBalance() throws Exception {
-        new Account(new AccountNumber("1912-7864"),800);
+        new Account(new AccountNumber("1912-7864"),new BigDecimal(800) );
     }
 }

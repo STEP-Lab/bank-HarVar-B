@@ -17,4 +17,9 @@ public class TransactionTest {
         transaction = new Transaction(date,1000,sampleAccountNumber);
         assertThat(transaction.getDate(),is(date));
     }
+
+    @Test
+    public void name() {
+
+    }
 }
